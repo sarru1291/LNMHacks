@@ -24,6 +24,7 @@ const deploy = async() => {
         });
     poll.setProvider(provider);
     console.log('Contract deployed at address ', poll.options.address);
-    console.log(poll);
+    // console.log(poll);
+    //0x220213526c954eF126c848Ee9861A654e3e2021F
 };
 deploy();
