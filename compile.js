@@ -5,6 +5,9 @@ const solc = require('solc');
 const pollingPath = path.resolve(__dirname, 'contracts', 'Polling.sol');
 // console.log(inboxPath);
 const source = fs.readFileSync(pollingPath, 'utf-8');
-// console.log(source);
-console.log(solc.compile(source, 1).contracts[':Polling']);
-module.exports = solc.compile(source, 1).contracts[':Lottery'];
+const bytecode = solc.compile(source).contracts[':Polling'].bytecode;
+const interface = solc.compile(source).contracts[':Polling'].interface;
+module.exports = {
+    bytecode,
+    interface
+};

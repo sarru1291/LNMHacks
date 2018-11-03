@@ -6,7 +6,12 @@ contract Polling{
     string public pollingName;
     uint public totalVotes;
      
-    struct Candidate{
+    constructor(string _name) public{
+        pollCreator=msg.sender;
+        pollingName=_name;
+    }
+	
+	struct Candidate{
         string name;
         uint voteCount;
     }
@@ -16,11 +21,6 @@ contract Polling{
         bool authorized;
         bool voted;
         uint vote;
-    }
-    
-    constructor(string _name) public{
-        pollCreator=msg.sender;
-        pollingName=_name;
     }
     
     modifier pollerCreatorOnly(){
