@@ -8,7 +8,8 @@ const mnemonics = 'embark grape brother misery raise stable hotel security item 
 const provider = new HDWalletProvider(mnemonics, 'https://rinkeby.infura.io/v3/18504985fe7d4eceb70e35612c5e6e6a');
 const web3 = new Web3(provider);
 console.log('provider added...');
-let accounts, poll;let contract_address;
+let accounts, poll;
+let contract_address;
 const deploy = async() => {
     console.log('Getting account...')
     accounts = await web3.eth.getAccounts();
@@ -23,9 +24,9 @@ const deploy = async() => {
             from: accounts[0]
         });
     poll.setProvider(provider);
-	// contract_addresss=poll.options.address;
+    // contract_addresss=poll.options.address;
     console.log('Contract deployed at address ', poll.options.address);
     // console.log(poll);
-    //0x220213526c954eF126c848Ee9861A654e3e2021F
+
 };
 deploy();
