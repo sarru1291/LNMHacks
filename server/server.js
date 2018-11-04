@@ -12,18 +12,3 @@
 // // console.log(contract.methods.getAllCandidates.call());
 // // console.log(contract.methods.getAllCandidates.call());
 // console.log(web3.eth.getBalance(contract.options.address));
-
-const ejs = require('ejs');
-const express = require('express');
-
-const app = express();
-const port = process.env.PORT || 8085;
-app.set('view engine', 'ejs');
-
-app.get('/', (req, res) => {
-    res.send('hello');
-});
-
-app.listen(port, () => {
-    console.log(`server is running at port ${port}`);
-})
