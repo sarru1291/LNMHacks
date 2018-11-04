@@ -26,6 +26,10 @@ app.get('/addcandidate', (req, res) => {
 app.get('/stats', (req, res) => {
     res.render('stats');
 });
+
+
+
+
 app.listen(port, () => {
     console.log(`server is running at port ${port}`);
 });

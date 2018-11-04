@@ -1,7 +1,4 @@
 const Web3 = require('web3');
-const fs = require('fs');
-console.log(web3);
-const contractAddress = '0x17c7e507c384f080ac92d626A39bF0a22CBEe6f6';
 const abi = [{
         "constant": false,
         "inputs": [{
@@ -20,7 +17,7 @@ const abi = [{
             "name": "_person",
             "type": "address"
         }],
-        "name": "authorize",
+        "name": "authorise",
         "outputs": [],
         "payable": false,
         "stateMutability": "nonpayable",
@@ -79,7 +76,19 @@ const abi = [{
     {
         "constant": true,
         "inputs": [],
-        "name": "getAllCandidates",
+        "name": "electionName",
+        "outputs": [{
+            "name": "",
+            "type": "string"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "getNumCandidate",
         "outputs": [{
             "name": "",
             "type": "uint256"
@@ -91,22 +100,10 @@ const abi = [{
     {
         "constant": true,
         "inputs": [],
-        "name": "pollCreator",
+        "name": "owner",
         "outputs": [{
             "name": "",
             "type": "address"
-        }],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "pollingName",
-        "outputs": [{
-            "name": "",
-            "type": "string"
         }],
         "payable": false,
         "stateMutability": "view",
@@ -132,7 +129,7 @@ const abi = [{
         }],
         "name": "voters",
         "outputs": [{
-                "name": "authorized",
+                "name": "authorised",
                 "type": "bool"
             },
             {
@@ -149,16 +146,15 @@ const abi = [{
         "type": "function"
     }
 ];
-
-// if (typeof web3 !== 'undefined') {
-// web3 = new Web3(window.web3.currentProvider);
-// console.log('h');
-// } else {
+const contractAddress = '0xD2a0d3fDA742E73646dC27ed2515EAC9d5A8c6cC';
 
 var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
-// console.log('y');
-// }
-// console.log(web3.eth.contract(interface).at(contractAddress));
+
 const contract = new web3.eth.Contract(abi, contractAddress);
 
-module.exports = contract;
+
+module.exports = {
+    contract,
+    abi,
+    contractAddress
+};
